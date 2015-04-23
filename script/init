@@ -1,0 +1,34 @@
+#!/bin/sh
+
+cat > Gemfile <<EOF
+source 'https://rubygems.org'
+gem 'clockwork'
+EOF
+
+cat > clock.rb <<EOF
+require 'rubygems'
+require 'clockwork'
+include Clockwork
+handler do |job|
+  # do something
+end
+every(1.day, 'job_name')
+EOF
+
+
+echo "/.bundle" > .gitignore
+
+echo "clock: bundle exec clockwork clock.rb" > Procfile
+
+cat <<EOF
+What's next:
+  $ cd $1
+  $ git init & git add . & git commit
+  $ bundle install --path bundle/gems
+Customize clock.rb
+  $ bundle exec clockwork clock.rb
+  $ heroku create $1 --stack cedar
+  $ git push heroku master
+  $ heroku scale clock=1
+Yah!!
+EOF

@@ -1,0 +1,5 @@
+/.bundle
+/bin
+/vendor/ruby
+/vendor/gems/
+/vendor/cache/ruby/
