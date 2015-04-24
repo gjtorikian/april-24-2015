@@ -12,6 +12,7 @@ GEM
     clockwork (1.2.0)
       activesupport
       tzinfo
+    dotenv (2.0.1)
     equalizer (0.0.11)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -46,4 +47,5 @@ PLATFORMS
 
 DEPENDENCIES
   clockwork (~> 1.0)
+  dotenv (~> 2.0)
   twitter (~> 5.0)
