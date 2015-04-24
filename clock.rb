@@ -22,8 +22,6 @@ tweets_file.split("\n").each_with_index do |tweet, i|
   tweets << "#{i + 1}. #{tweet} #ArmenianGenocide"
 end
 
-response = nil
-
 handler do |_|
   unless tweets.empty?
     tweet = tweets.shift
