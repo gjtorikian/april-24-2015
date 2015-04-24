@@ -19,12 +19,13 @@ tweets = ['Gonna start', 'Start two', 'And three?', '4', '5', '6', '7', '8', '9'
 
 response = nil
 handler do |_|
-  return if tweets.empty?
-  tweet = tweets.shift
-  if !response.nil?
-    response = client.update("@gjtorikian #{tweet}", :in_reply_to_status_id => response.id)
-  else
-    response = client.update(tweet)
+  unless tweets.empty?
+    tweet = tweets.shift
+    if !response.nil?
+      response = client.update("@gjtorikian #{tweet}", :in_reply_to_status_id => response.id)
+    else
+      response = client.update(tweet)
+    end
   end
 end
 
