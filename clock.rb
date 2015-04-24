@@ -15,9 +15,19 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = ENV['42415_TWITTER_ACCESS_SECRET']
 end
 
-tweets = ['Gonna start', 'Start two', 'And three?', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13!', '14,', '15']
+tweets_file = File.read('tweets.txt')
+
+tweets = []
+tweets_file.split("\n").each_with_index.map do |tweet, i|
+  if i > 0
+    tweets << "@gjtorikian #{i + 1}. #{tweet}"
+  else
+    tweets << "#{i + 1}. #{tweet}"
+  end
+end
 
 response = nil
+
 handler do |_|
   unless tweets.empty?
     tweet = tweets.shift
