@@ -27,11 +27,7 @@ response = nil
 handler do |_|
   unless tweets.empty?
     tweet = tweets.shift
-    if !response.nil?
-      response = client.update("@gjtorikian #{tweet}", :in_reply_to_status_id => response.id)
-    else
-      response = client.update(tweet)
-    end
+    client.update(tweet)
   end
 end
 
