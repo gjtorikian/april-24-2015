@@ -3,12 +3,8 @@
 tweets_file = File.read('tweets.txt')
 
 tweets = []
-tweets_file.split("\n").each_with_index.map do |tweet, i|
-  if i > 0
-    tweets << "@gjtorikian #{i + 1}. #{tweet}"
-  else
-    tweets << "#{i + 1}. #{tweet}"
-  end
+tweets_file.split("\n").each_with_index do |tweet, i|
+  tweets << "#{i + 1}. #{tweet} #ArmenianGenocide"
 end
 
 too_long = tweets.select { |t| t.length > 140 }
